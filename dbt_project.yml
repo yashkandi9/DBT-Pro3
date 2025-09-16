@@ -32,25 +32,15 @@ models:
     bronze:
       +schema: bronze
       +materialized: table
-      +persist_docs:
-          relation: true
-          columns: true
 
     # Silver layer
     silver:
       +schema: silver
       +materialized: table
-      +persist_docs:
-          relation: true
-          columns: true
 
     # Gold layer
     gold:
       +schema: gold
       +materialized: table
-      +persist_docs:
-          relation: true
-          columns: true
-
 # # Configuring models
 # # Full documentation: https://docs.getdbt.com/docs/configuring-models
