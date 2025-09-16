@@ -12,8 +12,8 @@
           tgt.target_count,
           0 AS bad_records
         FROM
-          (SELECT COUNT(*) AS source_count FROM insurance_catalog.dbt_ykandi_bronze.claims_bronze) src,
-          (SELECT COUNT(*) AS target_count FROM insurance_catalog.dbt_ykandi_silver.claims_silver) tgt
+          (SELECT COUNT(*) AS source_count FROM {{ ref('claims_bronze') }}) src,
+          (SELECT COUNT(*) AS target_count FROM {{ this }}) tgt
     "]
 ) }}
 
@@ -88,3 +88,4 @@ SELECT
     invalid_settled_amount_flag
 FROM deduped
 WHERE row_num = 1
+
