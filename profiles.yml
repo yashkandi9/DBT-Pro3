@@ -1,0 +1,12 @@
+insurance_project:
+  target: dev
+  outputs:
+    dev:
+      type: databricks
+      method: http
+      host: dbc-1fa6a09c-13f0.cloud.databricks.com
+      http_path: /sql/1.0/warehouses/03a2527a13e262aa
+      token: "dapi8d677256dc40b49a00d04eacfb938dc7"
+      schema: dbt_ykandi  # e.g., gold, silver, etc.
+      database: insurance_catalog  # e.g., hive_metastore, or unity catalog name
+      threads: 4

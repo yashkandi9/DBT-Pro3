@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: customers_bronze
+    description: "Bronze layer: raw customers data as ingested from CSV"
+    columns:
+      - name: customer_id
+        description: "Unique identifier for each customer"
+        tests:
+          - not_null
+          - unique
+      - name: customer_name
+        description: "Full name of the customer"
+      - name: email
+        description: "Customer email address"
+
+  - name: policies_bronze
+    description: "Bronze layer: raw policies data"
+    columns:
+      - name: policy_id
+        description: "Unique identifier for each policy"
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Foreign key to customers table"
+
+  - name: claims_bronze
+    description: "Bronze layer: raw claims data"
+    columns:
+      - name: claim_id
+        description: "Unique identifier for each claim"
+        tests:
+          - not_null
+          - unique
+      - name: policy_id
+        description: "Foreign key to policies table"
+
+  - name: premiums_bronze
+    description: "Bronze layer: raw premiums data"
+    columns:
+      - name: premium_id
+        description: "Unique identifier for each premium record"
+        tests:
+          - not_null
+          - unique
+      - name: policy_id
+        description: "Foreign key to policies table"

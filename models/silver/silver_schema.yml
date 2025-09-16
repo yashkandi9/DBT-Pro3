@@ -1,0 +1,102 @@
+version: 2
+
+models:
+  - name: claims_silver
+    description: "Standardized and enriched claims data joined with customers and policies."
+    columns:
+      - name: claim_id
+        description: "Unique identifier for the claim."
+        tests:
+          - not_null
+          - unique
+      - name: policy_id
+        description: "Policy associated with the claim."
+        tests:
+          - not_null
+      - name: customer_id
+        description: "Customer who raised the claim."
+        tests:
+          - not_null
+      - name: claim_date
+        description: "Date when the claim occurred."
+      - name: reported_date
+        description: "Date when the claim was reported."
+      - name: claim_amount
+        description: "Total claim amount requested."
+      - name: settled_amount
+        description: "Amount settled after adjustments."
+      - name: deductible_amount
+        description: "Deductible applied for this claim."
+      - name: claim_reason
+        description: "Reason for filing the claim."
+      - name: status
+        description: "Current status of the claim (e.g., Open, Settled, Denied)."
+      - name: fraud_indicator
+        description: "Flag for potential fraudulent claim."
+
+  - name: policies_silver
+    description: "Standardized policy data with consistent formatting and validated relationships."
+    columns:
+      - name: policy_id
+        description: "Unique identifier for the policy."
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Customer associated with the policy."
+        tests:
+          - not_null
+      - name: policy_type
+        description: "Type of insurance policy (e.g., Health, Auto, Life)."
+      - name: coverage_amount
+        description: "Coverage limit of the policy."
+      - name: premium_amount
+        description: "Premium charged for the policy."
+      - name: start_date
+        description: "Policy start date."
+      - name: end_date
+        description: "Policy end date."
+
+  - name: customers_silver
+    description: "Cleaned and standardized customer data for analytics and enrichment."
+    columns:
+      - name: customer_id
+        description: "Unique identifier for the customer."
+        tests:
+          - not_null
+          - unique
+      - name: first_name
+        description: "Customer's first name."
+      - name: last_name
+        description: "Customer's last name."
+      - name: gender
+        description: "Gender of the customer."
+      - name: date_of_birth
+        description: "Date of birth of the customer."
+      - name: email
+        description: "Customer email address."
+      - name: phone_number
+        description: "Customer phone number."
+
+  - name: premiums_silver
+    description: "Standardized premium payments data linked to policies and customers."
+    columns:
+      - name: premium_id
+        description: "Unique identifier for the premium record."
+        tests:
+          - not_null
+          - unique
+      - name: policy_id
+        description: "Policy linked to this premium payment."
+        tests:
+          - not_null
+      - name: customer_id
+        description: "Customer linked to this premium payment."
+        tests:
+          - not_null
+      - name: payment_date
+        description: "Date when the premium was paid."
+      - name: amount
+        description: "Amount of premium paid."
+      - name: payment_status
+        description: "Status of the payment (Paid, Pending, Failed)."

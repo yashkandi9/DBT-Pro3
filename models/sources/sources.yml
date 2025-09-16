@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Raw layer tables ingested via Auto Loader"
+    database: insurance_catalog
+    schema: raw
+    tables:
+      - name: customers
+        description: "Raw customers data from source CSVs"
+      - name: policies
+        description: "Raw policies data from source CSVs"
+      - name: claims
+        description: "Raw claims data from source CSVs"
+      - name: premiums
+        description: "Raw premiums data from source CSVs"
