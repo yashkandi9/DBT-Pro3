@@ -29,12 +29,12 @@ models:
   insurance_project:  # match your project name
     # Bronze layer
     bronze:
-      +schema: bronze
+      +schema: dbt_ykandi_bronze
       +materialized: table
 
     # Silver layer
     silver:
-      +schema: silver
+      +schema: dbt_ykandi_silver
       +materialized: table
 
     # Gold layer
