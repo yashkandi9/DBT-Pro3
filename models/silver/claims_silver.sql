@@ -1,6 +1,5 @@
 {{ config(
     materialized='table',
-    schema='silver',
     post_hook=["
         INSERT INTO insurance_catalog.dbt_ykandi_logging.dbt_logs
         (dataset, layer, time_processed, source_records, target_records, bad_records)
@@ -88,4 +87,5 @@ SELECT
     invalid_settled_amount_flag
 FROM deduped
 WHERE row_num = 1
+
 
