@@ -1,6 +1,5 @@
 {{ config(
     materialized='table',
-    schema='bronze',
      post_hook=[
         "
         INSERT INTO insurance_catalog.dbt_ykandi_logging.dbt_logs
@@ -42,6 +41,7 @@ SELECT
     CAST(source_file_path AS STRING)      AS source_file_path,
     CAST(source_file_time AS TIMESTAMP)   AS source_file_time
 FROM {{ source('raw', 'claims') }}
+
 
 
 
